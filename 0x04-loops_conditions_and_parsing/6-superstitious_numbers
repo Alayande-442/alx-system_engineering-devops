@@ -1,23 +1,30 @@
 #!/usr/bin/env bash
-#a script to test chinese culture
-count=1
-while [ $count -le 20 ]; do
-	case $count in
+# displays numbers from 1 to 20.
+
+COUNTER=1
+while [ $COUNTER -lt 21 ]
+do
+    case $COUNTER in
+
         4)
-	    echo $count
-            echo "bad luck from China"
-            ;;
-        9)
-	    echo $count
-            echo "bad luck from Japan"
-            ;;
-        17)
-	    echo $count
-            echo "bad luck from Italy"
-            ;;
-        *)
-            echo $count
-            ;;
-    	esac
-	((count++))
+	    echo $COUNTER
+	    echo "bad luck from China"
+	    ;;
+	
+	9)
+	    echo $COUNTER
+	    echo "bad luck from Japan"
+	    ;;
+	
+	17)
+	    echo $COUNTER
+	    echo "bad luck from Italy"
+	    ;;
+
+	*)
+	    echo $COUNTER
+	    ;;
+    esac
+
+    let COUNTER+=1
 done
