@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Use a for loop to iterate over files in the current directory
+for file in *; do
+    if [[ $file != .* ]]; then
+        name_part=$(echo "$file" | cut -d'-' -f2-)
+        echo "$name_part"
+    fi
+done

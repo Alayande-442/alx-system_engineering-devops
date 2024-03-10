@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Specify the file path
+passwd_file="/etc/passwd"
+while IFS=: read -r username _ uid _ _ home_dir _; do
+    echo "$username:$uid:$home_dir"
+done < "$passwd_file"

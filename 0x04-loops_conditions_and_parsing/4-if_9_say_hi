@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#a script that loops through and print best sch
+count=0
+while [ $count -lt 10 ]; do
+	if [ $count -eq 9 ]; then
+		echo "Hi"
+		echo "Best School"
+	else
+		echo "Best School"
+	fi
+	((count++))
+done
