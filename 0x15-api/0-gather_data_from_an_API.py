@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-
 """Returns to-do list information for a given employee ID."""
-
 import requests
 import sys
+
 
 def fetch_employee_data(employee_id):
     # Fetch user data
@@ -17,6 +16,7 @@ def fetch_employee_data(employee_id):
     todos_data = todos_response.json()
     
     return user_data, todos_data
+
 
 def display_todo_progress(employee_id):
     try:
@@ -37,8 +37,10 @@ def display_todo_progress(employee_id):
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python script.py <employee_id>")
     else:
         display_todo_progress(sys.argv[1])
+
