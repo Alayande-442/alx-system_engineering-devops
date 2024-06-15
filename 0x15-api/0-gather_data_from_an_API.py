@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
+"""Returns to-do list information for a given employee ID."""
+
 import requests
 import sys
-
-"""Returns to-do list information for a given employee ID."""
 
 def fetch_employee_data(employee_id):
     # Fetch user data
