@@ -3,6 +3,8 @@
 import requests
 import sys
 
+"""Returns to-do list information for a given employee ID."""
+
 def fetch_employee_data(employee_id):
     # Fetch user data
     user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
