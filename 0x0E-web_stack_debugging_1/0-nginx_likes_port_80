@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
-# commands to debug the container
-st="\tlisten 8080 default_server\;"
-newst="\tlisten 80 default_server\;"
-st2="\tlisten \[::\]:8080 default_server"
-newst2="\tlisten \[::\]:80 default_server"
-sudo sed -i "0,/$st/{s/$st/$newst/}" /etc/nginx/sites-enabled/default
-sudo sed -i "0,/$st2/{s/$st2/$newst2/}" /etc/nginx/sites-enabled/default
-sudo service nginx restart
+#configure nginx server to listen for port 80
+#this is spam
+#this is spam
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
