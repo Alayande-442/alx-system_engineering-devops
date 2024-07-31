@@ -1,45 +1,27 @@
 #!/usr/bin/python3
-"""Returns to-do list information for a given employee ID."""
+""" a Python script that, using a REST API, for a given employee ID,
+    returns information about his/her TODO list progress."""
 import requests
 import sys
 
 
-def fetch_employee_data(employee_id):
-    # Fetch user data
-    user_url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
-    user_response = requests.get(user_url)
-    user_data = user_response.json()
-    
-    # Fetch todos data
-    todos_url = f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}'
-    todos_response = requests.get(todos_url)
-    todos_data = todos_response.json()
-    
-    return user_data, todos_data
-
-
-def display_todo_progress(employee_id):
-    try:
-        employee_id = int(employee_id)
-    except ValueError:
-        print("Please provide a valid integer for employee ID.")
-        return
-    
-    user_data, todos_data = fetch_employee_data(employee_id)
-    
-    employee_name = user_data.get('name')
-    total_tasks = len(todos_data)
-    done_tasks = [task for task in todos_data if task.get('completed')]
-    number_of_done_tasks = len(done_tasks)
-    
-    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
-    
-    for task in done_tasks:
-        print(f"\t {task.get('title')}")
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-    else:
-        display_todo_progress(sys.argv[1])
+if __name__ == '__main__':
+    url = 'https://jsonplaceholder.typicode.com/users/' + sys.argv[1]
+    r = requests.get(url)
+    name = r.json().get("name")
+    url2 = 'https://jsonplaceholder.typicode.com/todos'
+    r2 = requests.get(url2)
+    task_names = []
+    tasks = 0
+    completed = 0
+    for item in r2.json():
+        if item.get("userId") == int(sys.argv[1]):
+            tasks += 1
+            if item.get("completed") is True:
+                completed += 1
+                task_names.append(item.get("title"))
+    print("Employee {} is done with tasks({}/{}):".format(name,
+                                                          completed,
+                                                          tasks))
+    for i in task_names:
+        print("\t {}".format(i))
