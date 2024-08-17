@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for task 0"""
+"""Module for task 0 which was revalidated my me on the 17/08/2024"""
 
 
 def number_of_subscribers(subreddit):
